@@ -25,6 +25,7 @@ class WorkoutSession(db.Model):
 
     member = db.relationship('Member', backref=db.backref('workout_sessions', lazy=True))
 
+# Task 2 --- Implement CRUD Operations For Members
 
 # Route to add a new member
 @app.route('/members', methods=['POST'])
@@ -59,6 +60,8 @@ def delete_member(id):
     db.session.commit()
     return jsonify({"message": "Member deleted successfully!"}), 200
 
+
+# Task 3 ----
 
 # Route to add a new workout session
 @app.route('/workouts', methods=['POST'])
@@ -114,7 +117,6 @@ def get_workout_sessions_for_member(member_id):
 
 
 with app.app_context():
-    db.drop_all()
     db.create_all()
 
 if __name__ == '__main__':
